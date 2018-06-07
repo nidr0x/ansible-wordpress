@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Carlos R.
+  description: An Ansible role to download WordPress
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+      - all
+    - name: Fedora
+      versions:
+      - all
+    - name: Debian
+      versions:
+      - all
+    - name: Ubuntu
+      versions:
+      - all
+  galaxy_tags:
+    - wordpress
+    - cms
+    - wp-config.php

@@ -1,0 +1,41 @@
+---
+- name: Checking if WP install dir exists..
+  file:
+    path: "{{ wordpress_install_dir }}"
+    owner: "{{ wp_uid }}" 
+    group: "{{ wp_gid }}"
+    state: directory
+    mode: 0755
+
+- name: Downloading and extracting WordPress
+  unarchive:
+    src: https://wordpress.org/latest.tar.gz
+    copy: no
+    dest: "{{ wordpress_install_dir }}"
+    extra_opts: [--strip-components=1]
+
+- name: Fetching random salts for WordPress config
+  get_url:
+    url: https://api.wordpress.org/secret-key/1.1/salt
+    dest: "{{ wordpress_install_dir }}/wp-salts.php"
+
+- name: Insert PHP start tag in wp salt file 
+  lineinfile:
+    dest: "{{ wordpress_install_dir }}/wp-salts.php"
+    line: '<?php'
+    state: present
+    insertbefore: BOF
+
+- name: Insert PHP end tag in wp salt file
+  lineinfile:
+    dest: "{{ wordpress_install_dir }}/wp-salts.php"
+    line: '?>'
+    state: present
+    insertafter: EOF
+
+- name: Generating wp-config.php config file
+  template:
+    src: wp-config.php.j2
+    dest: "{{ wordpress_install_dir }}/wp-config.php"
+    owner: "{{ wp_uid }}"
+    group: "{{ wp_gid }}" 

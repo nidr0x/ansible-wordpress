@@ -1,0 +1,18 @@
+---
+
+#Do you want to install WP-CLI?
+install_wpcli: yes 
+
+#Set WP installation dir
+wordpress_install_dir: /var/www/html
+
+#UID and GID for wp-config.php:
+wp_uid: www-data
+wp_gid: www-data
+
+#WP credentials
+wp_mysql_db: localhost 
+wp_mysql_user: test
+wp_mysql_password: test
+wp_database_host: test
+wp_prefix_db: wp_

@@ -1,0 +1,6 @@
+---
+
+- import_tasks: wordpress.yml
+
+- import_tasks: wp-cli.yml
+  when: install_wpcli|bool == true 
