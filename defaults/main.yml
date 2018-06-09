@@ -6,9 +6,9 @@ install_wpcli: yes
 #Set WP installation dir
 wordpress_install_dir: /var/www/html
 
-#UID and GID for wp-config.php:
-wp_uid: www-data
-wp_gid: www-data
+#UID and GID:
+wp_uid: nobody 
+wp_gid: nogroup
 
 #WP credentials
 wp_mysql_db: localhost 
