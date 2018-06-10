@@ -7,8 +7,8 @@ install_wpcli: yes
 wordpress_install_dir: /var/www/html
 
 #UID and GID:
-wp_uid: nobody 
-wp_gid: nogroup
+wp_uid: root 
+wp_gid: root
 
 #WP credentials
 wp_mysql_db: localhost 
